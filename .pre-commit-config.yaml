@@ -27,9 +27,14 @@ repos:
       - id: nbstripout
   - repo: local
     hooks:
+      - id: check-merge-commit
+        name: Check if Merge Commit
+        entry: $MERGE = True
+        stages: [pre-merge-commit]
+        language: script
       - id: prevent-commit-to-main
         verbose: true
         name: Prevent Commit to Main Branch
         entry: ./prevent_commit_to_main.sh
         language: script
-        stages: [commit]
+        stages: [pre-commit]
