@@ -4,7 +4,10 @@
 branch=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$branch" = "main" ]; then
-	if [ -f ${GIT_DIR}/MERGE_HEAD ]; then
+	echo $GIT_DIR
+	echo $GIT_DIR/MERGE_HEAD
+	echo $GIT_DIR/MERGE_MODE
+	if [ -f $GIT_DIR/MERGE_HEAD ]; then
 		echo "Merge to main allowed."
 	else
 		echo "You are on the main branch. Committing to the main branch is not allowed."
