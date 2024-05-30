@@ -28,6 +28,7 @@ repos:
   - repo: local
     hooks:
       - id: prevent-commit-to-main
+        verbose: true
         name: Prevent Commit to Main Branch
         entry: ./prevent_commit_to_main.sh
         language: script
