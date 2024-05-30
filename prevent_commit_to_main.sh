@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 ##!"C:\\Program Files\\Git\\usr\\bin\\bash.exe"
 
-branch="$(git rev-parse --abbrev-ref HEAD)"
+branch=$(git rev-parse --abbrev-ref HEAD)
 
 if [ "$branch" = "main" ]; then
 	if [ -e "${GIT_DIR}/MERGE_MODE" ]; then
