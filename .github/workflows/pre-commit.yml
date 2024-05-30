@@ -8,14 +8,12 @@ on:
 jobs:
   pre-commit:
     # pull requests are a duplicate of a branch push if within the same repo.
-    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository }}
-
+    # skip if merging, all pre-commit actions should be passing prior to merge.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository || github.event.pull_request.merged != true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-      - name: Make prevent_commit_to_main.sh executable
-        run: chmod +x ./prevent_commit_to_main.sh
       - uses: pre-commit/action@v3.0.0
         with:
           extra_args: --all-files
