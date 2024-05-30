@@ -29,7 +29,7 @@ repos:
     hooks:
       - id: check-merge-commit
         name: Check if Merge Commit
-        entry: $MERGE = True
+        entry: $MERGE = true
         stages: [pre-merge-commit]
         language: script
       - id: prevent-commit-to-main
