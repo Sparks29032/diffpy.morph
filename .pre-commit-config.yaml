@@ -25,16 +25,8 @@ repos:
     rev: 0.6.1
     hooks:
       - id: nbstripout
-  - repo: local
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
     hooks:
-      - id: check-merge-commit
-        name: Check if Merge Commit
-        entry: $MERGE = true
-        stages: [pre-merge-commit]
-        language: script
-      - id: prevent-commit-to-main
-        verbose: true
-        name: Prevent Commit to Main Branch
-        entry: ./prevent_commit_to_main.sh
-        language: script
-        stages: [pre-commit]
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]
