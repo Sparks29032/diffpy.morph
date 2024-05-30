@@ -25,10 +25,10 @@ repos:
     rev: 0.6.1
     hooks:
       - id: nbstripout
-  - repo: local
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
     hooks:
-      - id: prevent-commit-to-main
-        name: Prevent Commit to Main Branch
-        entry: ./prevent_commit_to_main.sh
-        language: script
-        stages: [commit]
+      - id: no-commit-to-branch
+        name: Prevent Commit to Main
+        args: ["--branch", "main"]
+        stages: ["pre-commit"]
