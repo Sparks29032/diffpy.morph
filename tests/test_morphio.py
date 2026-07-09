@@ -474,7 +474,9 @@ class TestApp:
         sfn = "smear_morph_result.cgr"
         save_file = (tmp_path / sfn).resolve().as_posix()
 
-        # Test Gaussian default
+        # Check that default smearing function is Gaussian
+        # Compare with gaussian.cgr file to ensure the header in the
+        # file saved matches the desired output
         opts, pargs = self.parser.parse_args(
             [
                 "--smear",
@@ -496,7 +498,10 @@ class TestApp:
                 expected = filter(ignore_path, tf)
                 are_files_same(actual, expected)
 
-        # Test explicit Gaussian specification with capitalization
+        # Check the program can parse the smear function as gaussian
+        # irrespective of the capitalization provided
+        # Compare with gaussian.cgr file to ensure the header in the
+        # file saved matches the desired output
         opts, pargs = self.parser.parse_args(
             [
                 "--smear",
@@ -520,7 +525,10 @@ class TestApp:
                 expected = filter(ignore_path, tf)
                 are_files_same(actual, expected)
 
-        # Test Lorentzian specification with capitalization
+        # Check the program can parse the smear function as lorentzian
+        # irrespective of the capitalization provided
+        # Compare with lorentzian.cgr file to ensure the header in the
+        # file saved matches the desired output
         opts, pargs = self.parser.parse_args(
             [
                 "--smear",
@@ -544,7 +552,10 @@ class TestApp:
                 expected = filter(ignore_path, tf)
                 are_files_same(actual, expected)
 
-        # Test incorrect smearing function
+        # Check that the program properly handles when the smearing function
+        # is not a known smearing function
+        # Compare with unknown.cgr file to ensure the header in the
+        # file saved matches the desired output
         opts, pargs = self.parser.parse_args(
             [
                 "--smear",
