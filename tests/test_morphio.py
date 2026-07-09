@@ -469,7 +469,9 @@ class TestApp:
             assert unc in params
             assert morph_info["uncertainties"][unc] is not None
 
-    def test_smear_func(self, setup, tmp_path):
+    def test_smear_func_io(self, setup, tmp_path):
+        """Ensure the headers saved in the files when the smear morph is
+        enabled matches the desired output."""
         file = self.testfiles[-1]
         sfn = "smear_morph_result.cgr"
         save_file = (tmp_path / sfn).resolve().as_posix()

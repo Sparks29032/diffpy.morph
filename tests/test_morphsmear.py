@@ -33,7 +33,7 @@ class TestMorphSmear:
 
     def test_morph(self, setup):
         """Check MorphSmear.morph()"""
-        # Test Gaussian (default)
+        # Test Gaussian (default) morph is applied correctly
         morph = MorphSmear()
         morph.smear = 0.15
         morph.smear_func = None
@@ -52,6 +52,7 @@ class TestMorphSmear:
 
         assert numpy.allclose(ysmear, y_morph)
 
+        # Test Lorentzian morph is applied correctly
         morph = MorphSmear()
         morph.smear = 0.15
         morph.smear_func = "lorentzian"
